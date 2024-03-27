@@ -34,7 +34,7 @@ _image_base_64 = b"iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAAAXNSR0IArs4c6
 def test_inline_images_are_included_in_output_if_writing_to_single_file():
     docx_path = generate_test_path("tiny-picture.docx")
     result = _local.run(["mammoth", docx_path])
-    assert_equal(b"""<p><img src="data:image/png;base64,""" + _image_base_64 + b"""" /></p>""", result.output)
+    assert_equal(b"""<p><img height="10" src="data:image/png;base64,""" + _image_base_64 + b"""" width="10" /></p>""", result.output)
 
 
 def test_images_are_written_to_separate_files_if_output_dir_is_set():
